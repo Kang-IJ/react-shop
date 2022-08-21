@@ -1,19 +1,17 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import './App.css';
 import data from './data.js';
 import Card from './Card.js';
 import Detail from './routes/Detail.js';
-
-export const Context1 = createContext();
+import Cart from './routes/Cart.js';
 
 function App() {
 
   let [shoes, setShoes] = useState(data);
-  let [stock] = useState([10, 11, 12]);
   let [click, setClick] = useState(0);
-  let [loading, setLoading] = useState(false);
+  let [loading] = useState(false);
   let navigate = useNavigate();
 
   // let arr = [1, 2, 3];
@@ -78,10 +76,11 @@ function App() {
           </>
         } />
         <Route path="/detail/:id" element={ 
-          <Context1.Provider value={{stock}}>
-            <Detail shoes={shoes}/>  {/* 이제 context로 감싼 컴포넌트들은 모두 stock state의 사용이 가능하다. */}
-          </Context1.Provider>
+            <Detail shoes={shoes}/>
         } />
+
+        <Route path="/cart" element={ <Cart /> } />
+
         <Route path="*" element={<div>없는 페이지입니다.</div>} />
         <Route path="/about" element={
           <About />

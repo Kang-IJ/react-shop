@@ -1,12 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
-import { Context1 } from "./../App";
-
 function Detail(props) {
-
-  const states = useContext(Context1); {/* import 해온 state 들이 객체 형태로 남아있을 것 */}
 
   const {id} = useParams();
   const value = props.shoes[id].id;
@@ -51,6 +47,7 @@ function Detail(props) {
             <p>{props.shoes[id].content}</p>
             <p>{props.shoes[id].price}원</p>
             <button className="btn btn-danger">주문하기</button>
+
           </div>
         </div>
         <Nav variant="tabs"  defaultActiveKey="link0">
