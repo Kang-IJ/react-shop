@@ -8,10 +8,13 @@ let cart = createSlice({
   ],
   reducers: {
     changeQuantity(state, action) {
-      state[action.payload].count += 1;
+      let num = state.findIndex((a)=>{return a.id == action.payload; });
+      state[num].count += 1;
     },
-
+    addToCart(state, action) {
+      state.push(action.payload);
+    }
   }
 });
-export let { changeQuantity } = cart.actions;
+export let { changeQuantity, addToCart } = cart.actions;
 export default cart;

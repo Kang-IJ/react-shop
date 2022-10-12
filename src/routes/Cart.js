@@ -36,11 +36,12 @@ function Cart() {
                   <td>{ state.cart[i].count }</td>
                   <td>
                     <button onClick={() => {
-                      dispatch(changeQuantity(i));
+                      dispatch(changeQuantity(state.cart[i].id));
                     }}>+</button>
                   </td>
                   <td>
                     <button onClick={()=>{
+                      
                     }}>
                       delete
                     </button>

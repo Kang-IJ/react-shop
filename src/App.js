@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import './App.css';
@@ -8,6 +8,17 @@ import Detail from './routes/Detail.js';
 import Cart from './routes/Cart.js';
 
 function App() {
+
+  useEffect(()=>{
+    localStorage.setItem('watched', JSON.stringify( [] ));
+  }, []);
+
+  let obj = { name: 'kim' };
+  localStorage.setItem('data', JSON.stringify(obj)); // array/object -> JSON 변환 JSON.stringify()
+  // JSON -> array/object 변환은 JSON.parse()
+
+  let outcome = localStorage.getItem('data');
+  console.log(JSON.parse(outcome));
 
   let [shoes, setShoes] = useState(data);
   let [click, setClick] = useState(0);
